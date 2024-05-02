@@ -3,7 +3,7 @@ import os
 from tkinter import *
 import tkinter as tk
 
-# Configure Gemini Pro Vision API
+# Configure Gemini Pro API
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 # Set up the model
@@ -36,7 +36,7 @@ safety_settings = [
 #defining root and size
 root=tk.Tk()
 root.geometry("1500x800")
-root.title("AI diet coach")
+root.title("AI Nutrition coach")
 
 # declaring string variable
 height_var=tk.StringVar()
@@ -69,25 +69,25 @@ def submit():
     goal=goal_var.get()
      
     #Generate response from Gemini AI
-    model = genai.GenerativeModel('gemini-pro')
-    response = model.generate_content("Diet plan for a person with height " + height+"and weight "+ weight +" , Age "+ age + ", Gender "+ gender +", Activity level "+ activity +" , Goals " + goal + " and Diet restriction " + diet)
+    model = genai.GenerativeModel('gemini-1.0-pro')
+    response = model.generate_content("Nutrition Plan for a person with height " + height+"and weight "+ weight +" , Age "+ age + ", Gender "+ gender +", Activity level "+ activity +" , Goals " + goal + " and Diet restriction " + diet)
     Output.insert(END,str(response.text))
      
      
 # creating a label for height using widget Label
-height_label = tk.Label(root, text = 'Height (in inches)', font=('calibre',10, 'bold'))
+height_label = tk.Label(root, text = 'Height (in Feet)', font=('calibre',10, 'bold'))
   
 # creating a entry for input height using widget Entry
 height_entry = tk.Entry(root, textvariable = height_var, font=('calibre',10,'normal'))
   
 # creating a label for weight using widget Label
-weight_label = tk.Label(root, text = 'Weight (in pound)', font = ('calibre',10,'bold'))
+weight_label = tk.Label(root, text = 'Weight (in Pound)', font = ('calibre',10,'bold'))
   
 # creating a entry for input weight using widget Entry
 weight_entry=tk.Entry(root, textvariable = weight_var, font = ('calibre',10,'normal'))
 
 # creating a label for age using widget Label
-age_label = tk.Label(root, text = 'Age (in years)', font=('calibre',10, 'bold'))
+age_label = tk.Label(root, text = 'Age (in Years)', font=('calibre',10, 'bold'))
   
 # creating a entry for input age using widget Entry
 age_entry = tk.Entry(root,textvariable = age_var, font=('calibre',10,'normal'))
